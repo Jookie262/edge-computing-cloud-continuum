@@ -4,8 +4,8 @@ This repository contains a small suite of interactive web apps that demonstrate 
 
 ## Projects
 
-1. **Pillars of Edge Computing and Cloud Continuum**
-   - Path: `Pillars of Edge Computing and Cloud Continuum/`
+1. **Key Features of Edge Computing and Cloud Continuum**
+   - Path: `Key Features/`
    - Focus: Interactive explanations for latency, bandwidth, data sovereignty and privacy, and offline resilience.
 
 2. **Autonomous Driving 3D**
@@ -84,7 +84,7 @@ After the workflow succeeds, your site is available at:
 |   `-- workflows/
 |       `-- deploy-pages.yml
 |-- Autonomous Driving 3d/
-|-- Pillars of Edge Computing and Cloud Continuum/
+|-- Key Features/
 |-- Remote Patient Monitoring (Healthcare)/
 |-- Smart Irrigation/
 |-- index.html
