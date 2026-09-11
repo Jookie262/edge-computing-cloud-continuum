@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Characteristics: Latency Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="topic">
+      <section class="panel">
+        <h1>Why Is My Message Slow?</h1>
+        <p>
+          Imagine this blue dot is your message. It travels from your computer to a website.
+          Move the slider to make the internet path faster or slower.
+        </p>
+
+        <div class="meaning">
+          <strong>Meaning of Latency:</strong>
+          Latency is the waiting time before your message reaches the website.
+          Small latency means quick response. Big latency means more waiting.
+        </div>
+
+        <div class="controls">
+          <label>
+            Internet Speed Delay: <span id="latencyValue">250 ms</span>
+            <input id="latency" type="range" min="60" max="1400" value="250" step="10" />
+          </label>
+        </div>
+
+        <div class="buttons">
+          <button id="toggleBtn">Pause</button>
+          <button id="sendBtn">Send Message</button>
+        </div>
+
+        <div class="stats" id="stats"></div>
+      </section>
+
+      <section class="viz-wrap">
+        <canvas id="latencyCanvas" width="1000" height="440" aria-label="Latency animation canvas"></canvas>
+        <div class="legend">
+          <span><i class="dot dot-inflight"></i> Message moving</span>
+          <span><i class="dot dot-arrived"></i> Message arrived</span>
+          <span><i class="dot dot-source"></i> You</span>
+          <span><i class="dot dot-destination"></i> Website</span>
+        </div>
+      </section>
+    </section>
+
+    <section class="topic">
+      <section class="panel">
+        <h2>What Is Bandwidth?</h2>
+        <p>
+          Bandwidth is how many messages can move at the same time.
+          Think of it like road width: wide road = more cars can pass.
+        </p>
+
+        <div class="meaning">
+          <strong>Meaning of Bandwidth:</strong>
+          Bandwidth is the amount of data that can be sent each second.
+          Low bandwidth means fewer messages each second. High bandwidth means more.
+        </div>
+
+        <div class="controls">
+          <label>
+            Bandwidth Size: <span id="bandwidthValue">4</span>
+            <input id="bandwidth" type="range" min="1" max="10" value="4" step="1" />
+          </label>
+        </div>
+
+        <div class="stats" id="bandwidthStats"></div>
+      </section>
+
+      <section class="viz-wrap">
+        <canvas id="bandwidthCanvas" width="1000" height="320" aria-label="Bandwidth animation canvas"></canvas>
+        <div class="legend">
+          <span><i class="dot dot-inflight"></i> Data moving</span>
+          <span><i class="dot dot-source"></i> Sender</span>
+          <span><i class="dot dot-destination"></i> Receiver</span>
+        </div>
+      </section>
+    </section>
+
+    <section class="topic">
+      <section class="panel">
+        <h2>Data Sovereignty & Privacy</h2>
+        <p>
+          Data sovereignty means data follows local rules of a country or region.
+          Privacy means personal data is protected and shared only when needed.
+        </p>
+
+        <div class="meaning">
+          <strong>Simple idea:</strong>
+          Edge mode keeps data close to you (more private).
+          Cloud mode sends data far away (sometimes needed, but less private).
+        </div>
+
+        <div class="buttons mode-buttons">
+          <button id="edgeModeBtn">Edge Mode (Local)</button>
+          <button id="cloudModeBtn">Cloud Mode (Far)</button>
+        </div>
+
+        <div class="stats" id="sovereigntyStats"></div>
+      </section>
+
+      <section class="viz-wrap">
+        <canvas id="sovereigntyCanvas" width="1000" height="320" aria-label="Data sovereignty and privacy animation canvas"></canvas>
+        <div class="legend">
+          <span><i class="dot dot-inflight"></i> Personal data</span>
+          <span><i class="dot dot-arrived"></i> Processed safely</span>
+          <span><i class="dot dot-destination"></i> Sent far to cloud</span>
+        </div>
+      </section>
+    </section>
+
+    <section class="topic">
+      <section class="panel">
+        <h2>Offline Resilience</h2>
+        <p>
+          Offline resilience means your app can still work when internet is down,
+          then sync data later when internet comes back.
+        </p>
+
+        <div class="meaning">
+          <strong>Simple idea:</strong>
+          Offline = save data safely on your device.
+          Online again = send saved data to cloud.
+        </div>
+
+        <div class="buttons mode-buttons">
+          <button id="goOfflineBtn">Go Offline</button>
+          <button id="goOnlineBtn">Go Online</button>
+          <button id="createDataBtn">Create Data</button>
+        </div>
+
+        <div class="stats" id="offlineStats"></div>
+      </section>
+
+      <section class="viz-wrap">
+        <canvas id="offlineCanvas" width="1000" height="320" aria-label="Offline resilience animation canvas"></canvas>
+        <div class="legend">
+          <span><i class="dot dot-source"></i> Data saved locally</span>
+          <span><i class="dot dot-inflight"></i> Data syncing</span>
+          <span><i class="dot dot-arrived"></i> Data synced</span>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
