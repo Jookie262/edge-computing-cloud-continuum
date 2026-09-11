@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Edge Computing &amp; Cloud Continuum — Remote Patient Monitoring</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="scene-container"></div>
+
+  <header id="app-header">
+    <h1>Remote Patient Monitoring <span>· Edge Computing &amp; Cloud Continuum</span></h1>
+    <p class="subtitle">One ICU patient, one nurse station. Switch the monitoring architecture below and trigger a critical event to see how fast — or whether — the alarm actually reaches the nurses.</p>
+  </header>
+
+  <div id="alert-banner" class="hidden"></div>
+
+  <aside id="side-panel">
+    <div class="panel-block">
+      <h2>Monitoring Architecture</h2>
+      <div class="mode-switch">
+        <button id="mode-cloud" class="mode-btn active" data-mode="cloud">☁️ Cloud-Only Monitoring</button>
+        <button id="mode-edge" class="mode-btn" data-mode="edge">⚡ Edge Computing Monitoring</button>
+      </div>
+      <p id="mode-desc" class="scenario-blurb">The ICU monitor only forwards raw vitals. The <b>cloud</b> evaluates thresholds and must send the alarm command back down to the nurse station — a full round trip for every critical event.</p>
+    </div>
+
+    <div class="panel-block">
+      <h2>Controls</h2>
+      <div class="control-row">
+        <button id="btn-pause">⏸ Pause vitals</button>
+        <button id="btn-critical" class="scenario-cta">🚨 Trigger Critical Event</button>
+      </div>
+      <div class="control-row">
+        <button id="btn-network" class="toggle-btn">📡 Cloud Link: ONLINE</button>
+        <span id="network-hint" class="scenario-blurb">Only affects Cloud-Only mode</span>
+      </div>
+    </div>
+
+    <div class="panel-block">
+      <h2>ICU Patient Vitals</h2>
+      <div class="vitals-row">
+        <span>HR <b id="v-hr">--</b></span>
+        <span>SpO2 <b id="v-spo2">--</b></span>
+        <span>Temp <b id="v-temp">--</b></span>
+        <span>BP <b id="v-bp">--</b></span>
+      </div>
+      <canvas id="sparkline" class="sparkline" width="270" height="34"></canvas>
+    </div>
+
+    <div class="panel-block">
+      <h2>Nurse Station Alarm</h2>
+      <div id="alarm-status" class="alarm-status off">OFF — no active alert</div>
+      <div id="pipeline-log" class="pipeline-log"></div>
+    </div>
+
+    <div class="panel-block">
+      <h2>Run History (Response Time)</h2>
+      <div id="run-history" class="run-history"></div>
+    </div>
+
+    <div class="panel-block">
+      <h2>Event Log</h2>
+      <div id="event-log"></div>
+    </div>
+  </aside>
+
+  <footer id="footer-hint">Drag to orbit · Scroll to zoom · Left room = ICU · center room = Edge server room · Right room = Nurse Station · Floating terminal above = cloud backend log</footer>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="js/simulation.js"></script>
+  <script type="module" src="js/ui.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

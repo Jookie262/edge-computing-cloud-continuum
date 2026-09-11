@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Irrigation | Edge vs Cloud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="farm"></canvas>
+
+    <header>
+      <div class="brand"><span class="brand-mark">◒</span><span>Jolou<span>FLOW</span></span></div>
+      <div class="headline"><span class="eyebrow">CLOUD CONTINUUM LAB</span><h1>Smart irrigation <em>in real time.</em></h1></div>
+      <div class="weather"><span id="weatherIcon">☀</span><div><b id="weatherName">Clear skies</b><small id="weatherDetail">High evaporation</small></div></div>
+    </header>
+
+    <main class="hud">
+      <section class="control-panel glass">
+        <div class="panel-title"><span>Decision routing</span><i></i></div>
+        <div class="toggle-row">
+          <div><b>Edge watering</b><small id="modeDescription">Local nodes respond instantly</small></div>
+          <label class="switch"><input id="edgeToggle" type="checkbox" checked /><span></span></label>
+        </div>
+        <div class="toggle-row cloud-toggle">
+          <div><b>Cloud connection</b><small id="cloudDescription">Farm network online</small></div>
+          <label class="switch"><input id="cloudToggle" type="checkbox" checked /><span></span></label>
+        </div>
+        <div class="mode-pill" id="modePill"><span></span><b>EDGE ACTIVE</b><em>~10ms response</em></div>
+        <label class="slider-label" for="drainSpeed"><span>Moisture drain</span><output id="drainValue">1.0×</output></label>
+        <input id="drainSpeed" type="range" min="0.35" max="3" value="1" step="0.05" />
+        <div class="moisture-note"><i></i><span>LIVE SOIL MOISTURE %</span></div>
+      </section>
+
+      <section class="stats-panel glass">
+        <div class="panel-title"><span>Farm telemetry</span><i></i></div>
+        <div class="health"><div class="health-head"><span>Farm health</span><b id="healthValue">--</b></div><div class="bar"><i id="healthBar"></i></div></div>
+        <div class="stats-grid">
+          <div><small>EDGE TRIGGERS</small><b id="edgeTriggers">0</b></div>
+          <div><small>CLOUD PLANS</small><b id="cloudPlans">0</b></div>
+          <div><small>EDGE AVG</small><b>10<small> ms</small></b></div>
+          <div><small>CLOUD AVG</small><b id="cloudAvg">—<small> ms</small></b></div>
+        </div>
+      </section>
+
+      <section class="schedule-panel glass">
+        <div class="panel-title"><span>Cloud optimizer</span><i></i></div>
+        <div class="optimizer-state"><span id="optimizerDot"></span><b id="optimizerStatus">Next sync in 5s</b></div>
+        <p id="optimizerCopy">Periodic farm-wide planning balances water use across all zones.</p>
+        <div class="schedule-list" id="scheduleList"></div>
+      </section>
+
+      <section class="event-panel glass">
+        <div class="panel-title"><span>Live event feed</span><i></i></div>
+        <div id="eventLog" class="event-log"></div>
+      </section>
+    </main>
+
+    <div class="scene-key"><span><i></i>9 independent growing zones</span><span>DRAG TO ORBIT · SCROLL TO ZOOM</span></div>
+    <div id="tooltip" class="zone-tooltip"></div>
+    <!-- OrbitControls imports the bare `three` module name internally. -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

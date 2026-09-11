@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Edge Computing &amp; Cloud Continuum — 3D Autonomous Driving Demo</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<canvas id="scene"></canvas>
+
+<header class="hud-top">
+  <h1>🚗 Autonomous Driving in 3D</h1>
+  <p class="subtitle">Edge Computing, V2X &amp; the Cloud Continuum</p>
+</header>
+
+<!-- Guided tour overlay -->
+<div class="tour-box" id="tourBox">
+  <div class="tour-step-label" id="tourStepLabel">Step 1 of 4</div>
+  <h2 id="tourTitle">Welcome</h2>
+  <p id="tourText"></p>
+  <div class="tour-nav">
+    <button id="tourPrev" class="btn">← Back</button>
+    <button id="tourNext" class="btn primary">Next →</button>
+  </div>
+</div>
+
+<!-- Simulation control panel -->
+<div class="panel" id="controlPanel" hidden>
+  <h3>🧪 Run the Scenario</h3>
+  <p class="tiny-note">A child steps onto the road 48 m ahead. The car drives at 90 km/h. Where should the "brake!" decision be made?</p>
+
+  <div class="arch-picker">
+    <label class="arch-option">
+      <input type="radio" name="arch" value="cloud" checked>
+      <span>☁️ Cloud Only <small>far datacenter, ~200 ms</small></span>
+    </label>
+    <label class="arch-option">
+      <input type="radio" name="arch" value="edge">
+      <span>📡 Edge / V2X <small>nearby roadside unit, ~8 ms</small></span>
+    </label>
+    <label class="arch-option">
+      <input type="radio" name="arch" value="continuum">
+      <span>🌐 Cloud Continuum <small>edge reacts + cloud learns</small></span>
+    </label>
+  </div>
+
+  <div class="controls">
+    <button id="runBtn" class="btn primary">▶ Run Simulation</button>
+    <button id="resetBtn" class="btn">↺ Reset</button>
+    <button id="camBtn" class="btn">🎥 Free Camera: OFF</button>
+  </div>
+
+  <div class="result-panel" id="resultPanel" hidden>
+    <h3 id="resultTitle"></h3>
+    <ul class="metrics" id="metricsList"></ul>
+  </div>
+
+  <table class="compare-table" id="compareTable">
+    <thead>
+      <tr><th>Architecture</th><th>Latency</th><th>Dist. before braking</th><th>Total stop dist.</th><th>Outcome</th></tr>
+    </thead>
+    <tbody id="compareBody">
+      <tr><td>☁️ Cloud</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>📡 Edge/V2X</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>🌐 Continuum</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="legend" id="legend" hidden>
+  <span>🚗 Car (drives in from far away)</span>
+  <span>🚸 Child</span>
+  <span>📶 V2X Roadside Unit</span>
+  <span>☁️ Cloud Datacenter (far away)</span>
+  <span>🟡 Data packet</span>
+  <span>👀 / 🛑 Signs = detection &amp; braking moments</span>
+</div>
+
+<div class="callout-toast" id="detectToast" hidden>👀 <strong>Child spotted! Sending data to ask "what should I do?"</strong></div>
+<div class="callout-toast" id="brakeToast" hidden>🛑 <strong>Decision received — the car is braking NOW!</strong></div>
+
+<script src="js/vendor/three.min.js"></script>
+<script src="js/vendor/OrbitControls.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
